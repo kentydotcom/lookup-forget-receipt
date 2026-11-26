@@ -233,4 +233,4 @@ Copyright (c) 2026 Kent G Lau, PhD. [MIT License](LICENSE).
 
 No KYC. No retained PII. Provider tokens stay in the Fly control plane. They are not written into this repository, a Sprite environment, or logs.
 
-This tree has no provider keys, no Sprites or Fly tokens, and no Fe contest gate password.
+This tree has no provider keys and no Sprites or Fly tokens.
