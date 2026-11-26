@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+var/
+logs/
+.sprite
+.env
+.env.*
+*.pid
+.DS_Store
