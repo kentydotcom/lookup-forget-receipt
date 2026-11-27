@@ -10,10 +10,11 @@ A public question goes in. Lookup is proxied through a Sprites connector. Notes 
 
 **[hs26-forgetful-b4at6.sprites.app](https://hs26-forgetful-b4at6.sprites.app)**
 
-- The Sprite is public. Its environment holds no provider keys.
-- **Ask** and **Forget** on that URL need connectors granted in the Fly dashboard. They are not an end-to-end live run.
-- Until those grants exist, the page shows the UI and a clean environment report.
-- The checkable end-to-end run is local: `./scripts/e2e.sh --ci`, against `scripts/mock_gateway.py`.
+- The Sprite is public. Its environment holds no provider keys. Tokens stay in the Fly control plane.
+- **Ask** uses the Tavily connector. **Forget** files a deletion receipt through the GitHub connector.
+- Connector access is deny-by-default and is granted with the name prefix `hs26-`. Ask and Forget on that URL work when those two connectors are granted to this Sprite.
+- The public receipts repo is [kentydotcom/receipts](https://github.com/kentydotcom/receipts). A receipt lists the removed paths, a leftover hash, and a timestamp. The notes themselves are not in it. [Example from this Sprite](https://github.com/kentydotcom/receipts/blob/main/deletion/forgetful-2026-11-26T174250%2B0800.json).
+- The checkable offline end-to-end run is local: `./scripts/e2e.sh --ci`, against `scripts/mock_gateway.py`.
 
 ![Six steps from a public question to a deletion receipt. The provider token stays in the Fly control plane.](docs/diagrams/flow.png)
 
@@ -225,7 +226,7 @@ RECEIPT_S3_BUCKET=<bucket>
 
 6. The default Sprite URL is authenticated. `sprite url update --auth public` only when the demo URL should be open. The live demo linked above is already public.
 
-Until the grants exist, `./scripts/e2e.sh --ci` is the run that proves the path. The live page still shows the UI and a clean environment report.
+Ask and Forget on the live URL work when the Tavily and GitHub connectors are granted to this Sprite, with the name prefix `hs26-`. `./scripts/e2e.sh --ci` against `scripts/mock_gateway.py` is the checkable offline run.
 
 ## License
 
